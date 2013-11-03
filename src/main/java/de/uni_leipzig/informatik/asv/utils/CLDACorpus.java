@@ -42,9 +42,9 @@ public class CLDACorpus {
 		for (int j = 0; j < docList.size(); j++) {
 			doc = docList.get(j);
 			documents[j] = new int[doc.size()];
-			 for (int i = 0; i < doc.size(); i++) {
-			 documents[j][i] = doc.get(i);
-			 }
+			for (int i = 0; i < doc.size(); i++) {
+				documents[j][i] = doc.get(i);
+			}
 		}
 	}
 
@@ -55,5 +55,4 @@ public class CLDACorpus {
 	public int getVocabularySize() {
 		return vocabularySize;
 	}
-
 }

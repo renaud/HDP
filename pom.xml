@@ -1,26 +1,40 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>de.uni-leipzig.informatik.asv</groupId>
 	<artifactId>hdp</artifactId>
+	<name>Hierarchical Dirichlet Processes</name>
+	<version>0.0.1-SNAPSHOT</version>
+	<description>Hierarchical Dirichlet Processes with Gibbs Sampling</description>
+	<packaging>jar</packaging>
+
 	<properties>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
 		<encoding>UTF-8</encoding>
 	</properties>
 
-	<name>Hierarchical Dirichlet Processes</name>
-	<version>0.0.1-SNAPSHOT</version>
-	<description>Hierarchical Dirichlet Processes with Gibbs Sampling</description>
 	<dependencies>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>appassembler-maven-plugin</artifactId>
+				<version>1.5</version>
+				<configuration>
+					<extraJvmArguments>-Xms1G -Xmx6G </extraJvmArguments>
+					<programs>
+						<program>
+							<mainClass>de.uni_leipzig.informatik.asv.hdp.HDPGibbsSampler</mainClass>
+							<name>hdp</name>
+						</program>
+					</programs>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-	<repositories>
-	</repositories>
 </project>
 
