@@ -7,19 +7,43 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Reads a corpus in LDA-C format:
+ * 
+ * <pre>
+ *  [M] [term_1]:[count] [term_2]:[count] ...  [term_N]:[count]
+ * </pre>
+ * 
+ * where [M] is the number of unique terms in the document, and the [count]
+ * associated with each term is how many times that term appeared in the
+ * document.
+ */
 public class CLDACorpus {
 
 	private int[][] documents;
 	private int vocabularySize = 0;
 
+	/**
+	 * Reads all documents from a corpus
+	 */
 	public CLDACorpus(InputStream is) throws IOException {
+		this(is, Integer.MAX_VALUE);
+	}
+
+	/**
+	 * Reads up to
+	 * 
+	 * @param nrDocs
+	 *            documents.
+	 */
+	public CLDACorpus(InputStream is, int nrDocs) throws IOException {
 		int length, word, counts;
 		List<List<Integer>> docList = new ArrayList<List<Integer>>();
 		List<Integer> doc;
 		BufferedReader br = new BufferedReader(new InputStreamReader(is,
 				"UTF-8"));
 		String line = null;
-		while ((line = br.readLine()) != null) {
+		while ((line = br.readLine()) != null && docList.size() < nrDocs) {
 			try {
 				doc = new ArrayList<Integer>();
 				String[] fields = line.split(" ");
