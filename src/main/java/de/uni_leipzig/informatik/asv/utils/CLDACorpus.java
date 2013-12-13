@@ -72,10 +72,12 @@ public class CLDACorpus {
 		}
 	}
 
+	/** @return |D| x |V| matrix of the documents */
 	public int[][] getDocuments() {
 		return documents;
 	}
 
+	/** @return |V| */
 	public int getVocabularySize() {
 		return vocabularySize;
 	}
